@@ -1,0 +1,18 @@
+Pckage: localreports
+Title: Creates a report on distribution for species.
+Version: 0.0.0.9000
+Authors@R: person("Brian", "O'Meara", email = "omeara.brian@gmail.com", role = c("aut", "cre"))
+Description: Creates a report on distribution for listed species; a prototype for TCBC.
+Depends: R (>= 3.5.0)
+License: GPL-2
+Encoding: UTF-8
+LazyData: true
+Imports: rphylotastic,
+    leaflet,
+    mapr,
+    dismo,
+    sp,
+    raster,
+    maptools
+Suggests: testthat
+RoxygenNote: 6.1.0
