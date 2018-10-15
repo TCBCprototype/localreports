@@ -15,6 +15,7 @@ Imports: rphylotastic,
     raster,
     maptools,
     maps,
-    devtools
+    devtools,
+    graphics
 Suggests: testthat
 RoxygenNote: 6.1.0

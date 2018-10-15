@@ -29,21 +29,23 @@ lr_prediction <- function(gbif) {
 #'
 #' @param lr_prediction_output Output from lr_prediction_output() function
 #' @param state State to plot (for all states, pass in ".")
+#' @param xlim Min and max of longitude
+#' @param ylim Min and max of latitude
 #' @return Nothing
 #' @export
 #' @examples
 #' prediction_object <- lr_prediction(lr_get_gbif_data_for_species("Quercus alba", country="US", state="Tennessee"))
 #' lr_prediction_plot(prediction_object)
-lr_prediction_plot <- function(lr_prediction_output, state="tennessee") {
-  maps::map('state', region=tolower(state),  fill=FALSE)
+lr_prediction_plot <- function(lr_prediction_output, state="tennessee", xlim=c(-90.360481, -81.53846), ylim=c(34.947001, 36.67528)) {
+  maps::map('county', region=tolower(state),  fill=FALSE, xlim=xlim, ylim=ylim)
   # plot(wrld_simpl,
   #    xlim = c(lr_prediction_output$ranges$min.lon, lr_prediction_output$ranges$max.lon),
   #    ylim = c(lr_prediction_output$ranges$min.lat, lr_prediction_output$ranges$max.lat),
   #    axes = TRUE,
   #    col = "grey95")
-  plot(lr_prediction_output$predictions, add = TRUE)
-  points(lr_prediction_output$observations$longitude, lr_prediction_output$observations$latitude, col = "black", pch = 20, cex = 0.75)
-  maps::map('state', region=tolower(state),  fill=FALSE, add=TRUE)
+  sp::plot(lr_prediction_output$predictions, add = TRUE)
+  graphics::points(lr_prediction_output$observations$longitude, lr_prediction_output$observations$latitude, col = "black", pch = 20, cex = 0.75)
+  maps::map('county', region=tolower(state),  fill=FALSE, add=TRUE, xlim=xlim, ylim=ylim)
 }
 
 #' Function to cache all species data
@@ -52,16 +54,29 @@ lr_prediction_plot <- function(lr_prediction_output, state="tennessee") {
 #' @export
 lr_cache_all <- function(pkg=TRUE) {
   all_species <- lr_get_listed_species()
-  cached_data <- list()
+  atrisk <- list()
   for (i in seq_along(all_species)) {
     prediction_object <- NULL
-    try(prediction_object <- lr_prediction(lr_get_gbif_data_for_species(all_species[i])))
+    try(prediction_object <- lr_prediction(lr_get_gbif_data_for_species(all_species[i], country=NULL, state=NULL))) #get all locations to do better prediction
     if(!is.null(prediction_object)) {
-      cached_data[[length(cached_data)+1]] <- list(species_name = all_species[i], prediction=prediction_object)
+      atrisk[[length(atrisk)+1]] <- list(species_name = all_species[i], prediction=prediction_object)
     }
   }
   if(pkg) {
-    devtools::use_data(cached_data, overwrite=TRUE)
+    devtools::use_data(atrisk, overwrite=TRUE)
   }
-  return(cached_data)
+  return(atrisk)
 }
+
+#' Data on TN endangered species
+#'
+#' This is a list created with the lr_cache_all() function.
+#' Each element of that list has two elements: species_name with the name of a federally-listed endangered or threatened species in Tennessee, and a prediction element that has the result of the lr_prediction function.
+#' Note that the location data and prediction is for the species' entire range, not just the range in Tennessee.
+#' Species with insufficient data for analysis are not included
+#'
+#' @name atrisk
+#' @docType data
+#' @author Brian O'Meara \email{omeara.brian@gmail.com}
+#' @keywords data
+"atrisk"

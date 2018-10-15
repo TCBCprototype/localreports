@@ -4,12 +4,17 @@
 \alias{lr_prediction_plot}
 \title{Plot prediction and species points}
 \usage{
-lr_prediction_plot(lr_prediction_output, state = "tennessee")
+lr_prediction_plot(lr_prediction_output, state = "tennessee",
+  xlim = c(-90.360481, -81.53846), ylim = c(34.947001, 36.67528))
 }
 \arguments{
 \item{lr_prediction_output}{Output from lr_prediction_output() function}
 
 \item{state}{State to plot (for all states, pass in ".")}
+
+\item{xlim}{Min and max of longitude}
+
+\item{ylim}{Min and max of latitude}
 }
 \value{
 Nothing
