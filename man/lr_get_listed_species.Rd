@@ -2,7 +2,7 @@
 % Please edit documentation in R/getdata.R
 \name{lr_get_listed_species}
 \alias{lr_get_listed_species}
-\title{Get endangered and threatened US species}
+\title{Get endangered and threatened US species from FWS}
 \usage{
 lr_get_listed_species(state = "TN")
 }

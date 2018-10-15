@@ -13,6 +13,8 @@ Imports: rphylotastic,
     dismo,
     sp,
     raster,
-    maptools
+    maptools,
+    maps,
+    devtools
 Suggests: testthat
 RoxygenNote: 6.1.0

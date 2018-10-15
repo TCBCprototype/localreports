@@ -22,12 +22,12 @@ lr_get_listed_species <- function(state="TN") {
 lr_get_gbif_data_for_species <- function(species, limit=1000, country="US", state="Tennessee") {
   result <- c()
   if(is.null(country)) {
-    result <- gbif::occ_search(scientificName = species, limit = limit)
+    result <- rgbif::occ_search(scientificName = species, limit = limit)
   } else {
     if(is.null(state)) {
-      result <- gbif::occ_search(scientificName = species, limit = limit, country=country)
+      result <- rgbif::occ_search(scientificName = species, limit = limit, country=country)
     } else {
-      result <- gbif::occ_search(scientificName = species, limit = limit, country=country, stateProvince=state )
+      result <- rgbif::occ_search(scientificName = species, limit = limit, country=country, stateProvince=state )
     }
   }
   return(result)
