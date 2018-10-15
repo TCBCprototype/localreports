@@ -1,4 +1,4 @@
-Pckage: localreports
+Package: localreports
 Title: Creates a report on distribution for species.
 Version: 0.0.0.9000
 Authors@R: person("Brian", "O'Meara", email = "omeara.brian@gmail.com", role = c("aut", "cre"))

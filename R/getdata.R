@@ -21,7 +21,7 @@ lr_get_listed_species <- function(state="TN") {
 #' @export
 lr_get_gbif_data_for_species <- function(species, limit=1000, country="US", state="Tennessee") {
   result <- c()
-  if(is.null(country) {
+  if(is.null(country)) {
     result <- gbif::occ_search(scientificName = species, limit = limit)
   } else {
     if(is.null(state)) {
