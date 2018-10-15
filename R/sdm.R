@@ -46,6 +46,7 @@ lr_prediction_plot <- function(lr_prediction_output, state="tennessee", xlim=c(-
   sp::plot(lr_prediction_output$predictions, add = TRUE)
   graphics::points(lr_prediction_output$observations$longitude, lr_prediction_output$observations$latitude, col = "black", pch = 20, cex = 0.75)
   maps::map('county', region=tolower(state),  fill=FALSE, add=TRUE, xlim=xlim, ylim=ylim)
+  maps::map('state',  fill=FALSE, add=TRUE)
 }
 
 #' Function to cache all species data
