@@ -9,13 +9,8 @@ ui <- dashboardPage(
       # Setting id makes input$tabs give the tabName of currently-selected tab
       id = "tabs",
       selectInput("species", "Species:",
-             c(sort(unlist(lapply(atrisk, "[[", "species_name"))))),
-      menuItem("Dashboard", tabName = "dashboard", icon = icon("dashboard")),
-      menuItem("Widgets", icon = icon("th"), tabName = "widgets"),
-      menuItem("Charts", icon = icon("bar-chart-o"),
-        menuSubItem("Sub-item 1", tabName = "subitem1"),
-        menuSubItem("Sub-item 2", tabName = "subitem2")
-      )
+             c(sort(unlist(lapply(atrisk, "[[", "species_name")))), selected="Cyprogenia stegaria"),
+      menuItem("Dashboard", tabName = "dashboard", icon = icon("dashboard"))
     ),
     textOutput("res")
   ),
@@ -47,11 +42,12 @@ server <- function(input, output, session) {
   output$plot1 <- renderPlot({
     localreports::lr_prediction_plot(atrisk[[chosen_species()]]$prediction)
   })
-  onezoom_url <- reactive({
-    isolate(paste0("http://www.onezoom.org/life/@", gsub(" ", "_", species_name())))
-  })
+  # onezoom_url <- reactive({
+  #   isolate()
+  # })
   output$onezoom <- renderUI({
-    tags$iframe(id = "onezoom", src = onezoom_url(), width = 700, height=700)
+    foo <- input$species # to make it react
+    tags$iframe(id = "onezoom", src = paste0("http://www.onezoom.org/life/@", gsub(" ", "_", species_name())), width = 700, height=700)
   })
 }
 
