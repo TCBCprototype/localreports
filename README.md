@@ -6,7 +6,7 @@ You can install it in R by doing:
 
 ```
 install.packages("devtools")
-devtools::install_github("TCBC_prototype/localreports")
+devtools::install_github("TCBCprototype/localreports")
 ```
 
 The main functions are:
