@@ -9,6 +9,7 @@ lr_get_listed_species <- function(state="TN") {
   results <- rphylotastic::url_get_scientific_names(paste0('https://ecos.fws.gov/ecp0/reports/species-listed-by-state-report?state=', state, '&status=listed'))
   results <- results[grepl(" ", results)] # delete false matches like "Orchids"
   results <- gsub("=", "", results) # how FWS handles some synonyms.
+  return(results)
 }
 
 #' Get GBIF data for a given species
