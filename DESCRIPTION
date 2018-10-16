@@ -8,7 +8,6 @@ License: GPL-2
 Encoding: UTF-8
 LazyData: true
 Imports: rphylotastic,
-    leaflet,
     mapr,
     dismo,
     sp,
@@ -16,6 +15,8 @@ Imports: rphylotastic,
     maptools,
     maps,
     devtools,
-    graphics
+    graphics,
+    shinydashboard,
+    shiny
 Suggests: testthat
 RoxygenNote: 6.1.0

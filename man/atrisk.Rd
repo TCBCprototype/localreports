@@ -4,7 +4,7 @@
 \name{atrisk}
 \alias{atrisk}
 \title{Data on TN endangered species}
-\format{An object of class \code{list} of length 85.}
+\format{An object of class \code{list} of length 62.}
 \usage{
 atrisk
 }
