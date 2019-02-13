@@ -4,10 +4,12 @@
 \alias{lr_cache_all}
 \title{Function to cache all species data}
 \usage{
-lr_cache_all(pkg = TRUE)
+lr_cache_all(pkg = TRUE, state = "TN")
 }
 \arguments{
 \item{pkg}{If TRUE, save within package}
+
+\item{state}{Two letter state code}
 }
 \value{
 A list of lists. Each element in the list has a species_name and the prediction and other information from lr_prediction()

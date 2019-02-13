@@ -51,10 +51,11 @@ lr_prediction_plot <- function(lr_prediction_output, state="tennessee", xlim=c(-
 
 #' Function to cache all species data
 #' @param pkg If TRUE, save within package
+#' @param state Two letter state code
 #' @return A list of lists. Each element in the list has a species_name and the prediction and other information from lr_prediction()
 #' @export
-lr_cache_all <- function(pkg=TRUE) {
-  all_species <- lr_get_listed_species()
+lr_cache_all <- function(pkg=TRUE, state="TN") {
+  all_species <- lr_get_listed_species(state=state)
   atrisk <- list()
   for (i in seq_along(all_species)) {
     prediction_object <- NULL
