@@ -10,5 +10,8 @@ test_that("Getting Quercus alba works", {
 
 test_that("Prediction works", {
   result <- lr_prediction(lr_get_gbif_data_for_species("Quercus alba", country="US", state="Tennessee"))
-  expect_gte(sum(grepl("Bioclim", class(result))),1)
+  expect_gte(length(result$predictions),2000)
+})
+test_that("Getting Country's Species works", {
+  
 })
