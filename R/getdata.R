@@ -22,7 +22,7 @@ lr_get_listed_species <- function(state="TN") {
 #' @param state Full state name. NULL if you want all states.
 #' @return An object of class gbif (from the rgbif package)
 #' @export
-lr_get_gbif_data_for_species <- function(species, limit=1000, country="US", state="Tennessee") {
+lr_get_gbif_data_for_species <- function(species, limit=1000, country="US", state="Null") {
   result <- c()
   if(is.null(country)) {
     result <- rgbif::occ_search(scientificName = species, limit = limit)
