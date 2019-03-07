@@ -17,3 +17,10 @@ test_that("Getting Country's Species works", {
   result<- lr_get_gbif_data_for_species("Quercus alba", country="US")
   expect_gte(length(unique(result$data$stateProvince)),2)
 })
+
+test_that("Get listed species",{
+  result <- lr_get_listed_species(state=NULL)
+  expect_gte(length(result),1000)
+  result <- lr_get_listed_species(state="TN")
+  expect_gte(length(result),50)
+})

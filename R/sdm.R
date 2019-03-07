@@ -54,7 +54,7 @@ lr_prediction_plot <- function(lr_prediction_output, state="all", xlim=c(-90.360
 #' @param state Two letter state code
 #' @return A list of lists. Each element in the list has a species_name and the prediction and other information from lr_prediction()
 #' @export
-lr_cache_all <- function(pkg=TRUE, state="TN") {
+lr_cache_all <- function(pkg=TRUE, state=NULL) {
   all_species <- lr_get_listed_species(state=state)
   atrisk <- list()
   for (i in seq_along(all_species)) {
