@@ -35,8 +35,8 @@ lr_prediction <- function(gbif) {
 #' @export
 #' @examples
 #' prediction_object <- lr_prediction(lr_get_gbif_data_for_species("Quercus alba", country="US", state="Tennessee"))
-#' lr_prediction_plot(prediction_object)
-lr_prediction_plot <- function(lr_prediction_output, state="tennessee", xlim=c(-90.360481, -81.53846), ylim=c(34.947001, 36.67528)) {
+#' lr_prediction_plot(prediction_object, state="tennessee")
+lr_prediction_plot <- function(lr_prediction_output, state="all", xlim=c(-90.360481, -81.53846), ylim=c(34.947001, 36.67528)) {
   maps::map('county', region=tolower(state),  fill=FALSE, xlim=xlim, ylim=ylim)
   # plot(wrld_simpl,
   #    xlim = c(lr_prediction_output$ranges$min.lon, lr_prediction_output$ranges$max.lon),

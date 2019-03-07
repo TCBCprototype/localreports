@@ -12,6 +12,8 @@ test_that("Prediction works", {
   result <- lr_prediction(lr_get_gbif_data_for_species("Quercus alba", country="US", state="Tennessee"))
   expect_gte(length(result$predictions),2000)
 })
+
 test_that("Getting Country's Species works", {
-  
+  result<- lr_get_gbif_data_for_species("Quercus alba", country="US")
+  expect_gte(length(unique(result$data$stateProvince)),2)
 })

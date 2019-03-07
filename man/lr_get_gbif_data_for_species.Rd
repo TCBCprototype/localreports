@@ -5,7 +5,7 @@
 \title{Get GBIF data for a given species}
 \usage{
 lr_get_gbif_data_for_species(species, limit = 1000, country = "US",
-  state = "Tennessee")
+  state = NULL)
 }
 \arguments{
 \item{species}{The species name to search for info for}

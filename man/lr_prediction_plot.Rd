@@ -4,7 +4,7 @@
 \alias{lr_prediction_plot}
 \title{Plot prediction and species points}
 \usage{
-lr_prediction_plot(lr_prediction_output, state = "tennessee",
+lr_prediction_plot(lr_prediction_output, state = "all",
   xlim = c(-90.360481, -81.53846), ylim = c(34.947001, 36.67528))
 }
 \arguments{
@@ -24,5 +24,5 @@ Follows Jeff Oliver's tutorial at https://jcoliver.github.io/learn-r/011-species
 }
 \examples{
 prediction_object <- lr_prediction(lr_get_gbif_data_for_species("Quercus alba", country="US", state="Tennessee"))
-lr_prediction_plot(prediction_object)
+lr_prediction_plot(prediction_object, state="tennessee")
 }
