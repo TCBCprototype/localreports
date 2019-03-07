@@ -17,6 +17,7 @@ Imports: rphylotastic,
     devtools,
     graphics,
     shinydashboard,
-    shiny
+    shiny,
+    usethis
 Suggests: testthat
 RoxygenNote: 6.1.1

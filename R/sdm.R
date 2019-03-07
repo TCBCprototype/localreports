@@ -61,14 +61,14 @@ lr_cache_all <- function(pkg=TRUE, state=NULL) {
     prediction_object <- NULL
     print(paste0("Now trying ", all_species[i], ", which is ", i, " of ", length(all_species)))
     try(prediction_object <- lr_prediction(lr_get_gbif_data_for_species(all_species[i], country=NULL, state=NULL))) #get all locations to do better prediction
-    tn_only <- NULL
-    try(tn_only <- lr_prediction(lr_get_gbif_data_for_species(all_species[i]))) #to make sure there are records in TN
-    if(!is.null(prediction_object) & !is.null(tn_only)) {
+    #tn_only <- NULL
+  #  try(tn_only <- lr_prediction(lr_get_gbif_data_for_species(all_species[i]))) #to make sure there are records in TN
+    if(!is.null(prediction_object)) {
       atrisk[[length(atrisk)+1]] <- list(species_name = all_species[i], prediction=prediction_object)
     }
   }
   if(pkg) {
-    devtools::use_data(atrisk, overwrite=TRUE)
+    usethis::use_data(atrisk, overwrite=TRUE)
   }
   return(atrisk)
 }
