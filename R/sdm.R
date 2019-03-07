@@ -59,6 +59,7 @@ lr_cache_all <- function(pkg=TRUE, state=NULL) {
   atrisk <- list()
   for (i in seq_along(all_species)) {
     prediction_object <- NULL
+    print(paste0("Now trying ", all_species[i], ", which is ", i, " of ", length(all_species)))
     try(prediction_object <- lr_prediction(lr_get_gbif_data_for_species(all_species[i], country=NULL, state=NULL))) #get all locations to do better prediction
     tn_only <- NULL
     try(tn_only <- lr_prediction(lr_get_gbif_data_for_species(all_species[i]))) #to make sure there are records in TN
