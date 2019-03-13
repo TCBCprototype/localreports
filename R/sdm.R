@@ -37,7 +37,13 @@ lr_prediction <- function(gbif) {
 #' prediction_object <- lr_prediction(lr_get_gbif_data_for_species("Quercus alba", country="US", state="Tennessee"))
 #' lr_prediction_plot(prediction_object, state="tennessee")
 lr_prediction_plot <- function(lr_prediction_output, state="all", xlim=c(-90.360481, -81.53846), ylim=c(34.947001, 36.67528)) {
-  maps::map('county', region=tolower(state),  fill=FALSE, xlim=xlim, ylim=ylim)
+  if(state!="all") {
+    region <- tolower(state)
+  } else {
+    region <- NULL
+  }
+  maps::map('county', region=region,  fill=FALSE, xlim=xlim, ylim=ylim)
+  
   # plot(wrld_simpl,
   #    xlim = c(lr_prediction_output$ranges$min.lon, lr_prediction_output$ranges$max.lon),
   #    ylim = c(lr_prediction_output$ranges$min.lat, lr_prediction_output$ranges$max.lat),
@@ -45,7 +51,7 @@ lr_prediction_plot <- function(lr_prediction_output, state="all", xlim=c(-90.360
   #    col = "grey95")
   sp::plot(lr_prediction_output$predictions, add = TRUE)
   graphics::points(lr_prediction_output$observations$longitude, lr_prediction_output$observations$latitude, col = "black", pch = 20, cex = 0.75)
-  maps::map('county', region=tolower(state),  fill=FALSE, add=TRUE, xlim=xlim, ylim=ylim)
+  maps::map('county', region=region,  fill=FALSE, add=TRUE, xlim=xlim, ylim=ylim)
   maps::map('state',  fill=FALSE, add=TRUE)
 }
 
