@@ -1,6 +1,7 @@
 library(shiny)
 library(shinydashboard)
 library(localreports)
+library(raster)
 
 ui <- dashboardPage(
   dashboardHeader(),
